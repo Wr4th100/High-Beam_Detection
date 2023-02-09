@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 63.32, "left": 19.74, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -101.04, "left": 66.87, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -75.38,
+      "left": 332.43,
+      "attrs": { "color": "red", "flip": "1" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -195.52,
+      "left": 281.44,
+      "attrs": {}
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 150.71, "left": 370.06, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay2", "top": 297.19, "left": 316.91, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led4",
+      "top": 208.18,
+      "left": 553.62,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 72.06,
+      "left": 506.59,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 123.32,
+      "left": 571.99,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 275.16,
+      "left": 601.91,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "uno:13", "ultrasonic1:TRIG", "green", [ "v0" ] ],
+    [ "uno:12", "ultrasonic1:ECHO", "green", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "uno:5V", "red", [ "v0" ] ],
+    [ "uno:GND.2", "ultrasonic1:GND", "black", [ "v0" ] ],
+    [ "ldr1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "ldr1:GND", "uno:GND.2", "black", [ "h0" ] ],
+    [ "ldr1:DO", "uno:A3", "green", [ "h0" ] ],
+    [ "relay1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "relay1:GND", "uno:GND.2", "black", [ "h0" ] ],
+    [ "relay1:IN", "uno:A0", "green", [ "h0" ] ],
+    [ "relay2:IN", "uno:A1", "green", [ "h0" ] ],
+    [ "relay2:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "relay2:GND", "uno:GND.2", "black", [ "h0" ] ],
+    [ "led2:C", "uno:GND.3", "green", [ "v288.77", "h-157.94" ] ],
+    [ "led2:A", "uno:3", "green", [ "v0" ] ],
+    [ "led1:A", "r1:1", "green", [ "v0" ] ],
+    [ "r1:2", "relay1:COM", "green", [ "v0" ] ],
+    [ "led1:C", "uno:GND.3", "green", [ "v0" ] ],
+    [ "relay1:NC", "uno:3.3V", "green", [ "v0" ] ],
+    [ "led4:A", "r2:1", "green", [ "v0" ] ],
+    [ "r2:2", "relay2:COM", "green", [ "v0" ] ],
+    [ "led4:C", "uno:GND.3", "green", [ "v0" ] ],
+    [ "relay2:NC", "uno:3.3V", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
